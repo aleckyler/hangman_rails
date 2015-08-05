@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @game.name %>
+</p>
+
+<p>
+  <strong>Word:</strong>
+  <%= @game.word %>
+</p>
+
+<p>
+  <strong>Lives:</strong>
+  <%= @game.lives %>
+</p>
+
+<p>
+  <strong>Underscore array:</strong>
+  <%= @game.underscore_array %>
+</p>
+
+<p>
+  <strong>Word array:</strong>
+  <%= @game.word_array %>
+</p>
+
+<p>
+  <strong>Available letters:</strong>
+  <%= @game.available_letters %>
+</p>
+
+<%= link_to 'Edit', edit_game_path(@game) %> |
+<%= link_to 'Back', games_path %>

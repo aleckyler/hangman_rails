@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  word: MyString
+  lives: MyString
+  underscore_array: MyString
+  word_array: MyString
+  available_letters: MyString
+
+two:
+  name: MyString
+  word: MyString
+  lives: MyString
+  underscore_array: MyString
+  word_array: MyString
+  available_letters: MyString
