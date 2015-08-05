@@ -5,11 +5,9 @@
 <table>
   <thead>
     <tr>
-      <th>Name</th>
-      <th>Word</th>
+      <th>Game Name</th>
       <th>Lives</th>
-      <th>Underscore array</th>
-      <th>Word array</th>
+      <th>Current Progress</th>
       <th>Available letters</th>
       <th colspan="3"></th>
     </tr>
@@ -22,7 +20,6 @@
         <td><%= game.word %></td>
         <td><%= game.lives %></td>
         <td><%= game.underscore_array %></td>
-        <td><%= game.word_array %></td>
         <td><%= game.available_letters %></td>
         <td><%= link_to 'Show', game %></td>
         <td><%= link_to 'Edit', edit_game_path(game) %></td>
