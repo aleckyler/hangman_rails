@@ -1,7 +1,7 @@
 <% if (@game.lives == 0) %>
   <h3>THIS GAME IS OVER</h3>
   <h4><%= Game.find(params[:id]).player_name %> could not guess <%= Game.find(params[:id]).player_name %>'s word! </h4>
-<% elsif (@play.game.underscore_array == @play.game.word.split(//).join()) %>
+<% elsif (@game.underscore_array == @game.word.split(//).join()) %>
   <h3>THIS GAME IS OVER</h3>
   <h4><%= Game.find(params[:id]).player_name %> correctly guessed <%= Game.find(params[:id]).player_name %>'s word! </h4>
 <% else %>
