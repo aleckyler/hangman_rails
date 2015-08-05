@@ -5,7 +5,8 @@
 <table>
   <thead>
     <tr>
-      <th>Game Name</th>
+      <th>Host Name</th>
+      <th>Player Name</th>
       <th>Lives</th>
       <th>Current Progress</th>
       <th>Available letters</th>
@@ -16,13 +17,12 @@
   <tbody>
     <% @games.each do |game| %>
       <tr>
-        <td><%= game.name %></td>
-        <td><%= game.word %></td>
+        <td><%= game.host_name %></td>
+        <td><%= game.player_name %></td>
         <td><%= game.lives %></td>
         <td><%= game.underscore_array %></td>
         <td><%= game.available_letters %></td>
         <td><%= link_to 'Show', game %></td>
-        <td><%= link_to 'Edit', edit_game_path(game) %></td>
         <td><%= link_to 'Destroy', game, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>

@@ -10,6 +10,7 @@ class GamesController < ApplicationController
   # GET /games/1
   # GET /games/1.json
   def show
+    @play = Play.new
   end
 
   # GET /games/new
@@ -26,9 +27,9 @@ class GamesController < ApplicationController
   def create
     @game = Game.new(game_params)
     @game.word_array = @game.word.split(//)
-    @underscores =""
-    @game.word.length.times{ @underscores << "_" }
-    @game.underscore_array = @underscores.split(//)
+    @game.underscore_array = ""
+    @game.word.length.times{ @game.underscore_array << "_" }
+    # @game.underscore_array = @underscores.split(//)
 
     respond_to do |format|
       if @game.save
@@ -73,6 +74,6 @@ class GamesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def game_params
-      params.require(:game).permit(:name, :word, :lives, :available_letters)
+      params.require(:game).permit(:name, :host_name, :player_name, :word, :lives, :available_letters)
     end
 end

@@ -1,3 +1,4 @@
 class Game < ActiveRecord::Base
-  validates :name, :word, presence: true
+  validates :host_name, :player_name, :word, presence: true
+  has_many :plays
 end

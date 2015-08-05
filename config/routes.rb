@@ -1,6 +1,13 @@
 Rails.application.routes.draw do
-  resources :games
   root 'games#index'
+  resources :games do
+    member do
+      get 'win'
+      get 'lose'
+    end
+  end
+  get 'plays', to: 'plays#index'
+  post 'plays', to: 'plays#create'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

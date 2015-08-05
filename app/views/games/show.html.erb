@@ -1,34 +1,39 @@
-<p id="notice"><%= notice %></p>
+<% if (@game.lives == 0) %>
+  <h3>THIS GAME IS OVER</h3>
+  <h4><%= Game.find(params[:id]).player_name %> could not guess <%= Game.find(params[:id]).player_name %>'s word! </h4>
+<% elsif (@play.game.underscore_array == @play.game.word.split(//).join()) %>
+  <h3>THIS GAME IS OVER</h3>
+  <h4><%= Game.find(params[:id]).player_name %> correctly guessed <%= Game.find(params[:id]).player_name %>'s word! </h4>
+<% else %>
+  <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @game.name %>
-</p>
+  <p>
+    <strong>Host Name:</strong>
+    <%= @game.host_name %>
+  </p>
 
-<p>
-  <strong>Word:</strong>
-  <%= @game.word %>
-</p>
+  <p>
+    <strong>Player Name:</strong>
+    <%= @game.player_name %>
+  </p>
 
-<p>
-  <strong>Lives:</strong>
-  <%= @game.lives %>
-</p>
+  <p>
+    <strong>Lives:</strong>
+    <%= @game.lives %>
+  </p>
 
-<p>
-  <strong>Underscore array:</strong>
-  <%= @game.underscore_array %>
-</p>
+  <p>
+    <strong>Underscore array:</strong>
+    <%= @game.underscore_array.split(//).join(" ") %>
+  </p>
 
-<p>
-  <strong>Word array:</strong>
-  <%= @game.word_array %>
-</p>
+  <p>
+    <strong>Available letters:</strong>
+    <%= @game.available_letters %>
+  </p>
 
-<p>
-  <strong>Available letters:</strong>
-  <%= @game.available_letters %>
-</p>
+  <h3>Play</h3>
+  <%= render 'plays/form' %>
+<% end %>
 
-<%= link_to 'Edit', edit_game_path(@game) %> |
 <%= link_to 'Back', games_path %>
