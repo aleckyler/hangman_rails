@@ -26,6 +26,7 @@ class GamesController < ApplicationController
   # POST /games.json
   def create
     @game = Game.new(game_params)
+    @game.word = @game.word.downcase
     @game.word_array = @game.word.split(//)
     @game.underscore_array = ""
     @game.word.length.times{ @game.underscore_array << "_" }
@@ -33,7 +34,7 @@ class GamesController < ApplicationController
 
     respond_to do |format|
       if @game.save
-        format.html { redirect_to @game, notice: 'Game was successfully created.' }
+        format.html { redirect_to show_game_path(@game), notice: 'Game was successfully created.' }
         format.json { render :show, status: :created, location: @game }
       else
         format.html { render :new }
@@ -47,7 +48,7 @@ class GamesController < ApplicationController
   def update
     respond_to do |format|
       if @game.update(game_params)
-        format.html { redirect_to @game, notice: 'Game was successfully updated.' }
+        format.html { redirect_to show_game_path(@game), notice: 'Game was successfully updated.' }
         format.json { render :show, status: :ok, location: @game }
       else
         format.html { render :edit }
