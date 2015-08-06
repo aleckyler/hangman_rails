@@ -55,7 +55,8 @@ class PlaysController < ApplicationController
               @play.game.lives = @play.game.lives.to_i - 1
               @play.game.save
               if (@play.game.lives == "0")
-
+                @play.game.underscore_array = "Game Over!"
+                @play.game.save
                 format.html {redirect_to lose_game_path(@play.game)}
               else
                 format.html {redirect_to @play.game #, notice: "#{@play.guess} is not in the word."
