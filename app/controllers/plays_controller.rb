@@ -45,6 +45,7 @@ class PlaysController < ApplicationController
               @play.game.save
               if (@play.game.underscore_array == @play.game.word.split(//).join())
                 @play.game.underscore_array = "Game Over!"
+                @play.game.save
                 format.html {redirect_to win_game_path(@play.game)}
               else
                 format.html {redirect_to @play.game #, notice: "#{@play.guess} is in the word!"
@@ -76,6 +77,7 @@ class PlaysController < ApplicationController
           format.json { render json: @play.errors, status: :unprocessable_entity }
         end
       end
+      @play.destroy
 
     # ----------------------------------------------------------------------------------------
 
