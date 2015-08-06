@@ -44,17 +44,21 @@ class PlaysController < ApplicationController
               end
               @play.game.save
               if (@play.game.underscore_array == @play.game.word.split(//).join())
+                @play.game.underscore_array = "Game Over!"
                 format.html {redirect_to win_game_path(@play.game)}
               else
-                format.html {redirect_to @play.game, notice: "#{@play.guess} is in the word!"}
+                format.html {redirect_to @play.game #, notice: "#{@play.guess} is in the word!"
+              }
               end
             else
               @play.game.lives = @play.game.lives.to_i - 1
               @play.game.save
               if (@play.game.lives == "0")
+
                 format.html {redirect_to lose_game_path(@play.game)}
               else
-                format.html {redirect_to @play.game, notice: "#{@play.guess} is not in the word."}
+                format.html {redirect_to @play.game #, notice: "#{@play.guess} is not in the word."
+              }
               end
 
             end
@@ -63,7 +67,7 @@ class PlaysController < ApplicationController
             format.json { render :show, status: :created, location: @play.game }
           else
 
-              format.html {redirect_to :back, notice: "#{@play.guess} was not an available letter."}
+              format.html {redirect_to :back, notice: "#{@play.guess} is not an available letter."}
 
           end
 

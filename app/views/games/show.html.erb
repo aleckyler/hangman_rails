@@ -1,14 +1,30 @@
+<% if (@game.lives == "6") %>
+  <% gallow_img =  image_tag('empty_gallow.png', alt: '6 lives') %>
+<% elsif (@game.lives == "5") %>
+  <% gallow_img =  image_tag('gallow_w_head.png', alt: '5 lives') %>
+<% elsif (@game.lives == "4") %>
+  <% gallow_img =  image_tag('gallow_w_body.png', alt: '4 lives') %>
+<% elsif (@game.lives == "3") %>
+  <% gallow_img =  image_tag('gallow_w_1arm.png', alt: '3 lives') %>
+<% elsif (@game.lives == "2") %>
+  <% gallow_img =  image_tag('gallow_w_arms.png', alt: '2 lives') %>
+<% elsif (@game.lives == "1") %>
+  <% gallow_img =  image_tag('gallow_w_1leg.png', alt: '1 life') %>
+<% elsif (@game.lives == "0") %>
+  <% gallow_img =  image_tag('gallow_w_legs.png', alt: 'dead') %>
+<% end %>
+
 <% if (@game.lives == 0) %>
   <h3>THIS GAME IS OVER</h3>
   <h4><%= Game.find(params[:id]).player_name %> could not guess <%= Game.find(params[:id]).player_name %>'s word! </h4>
   <p>
-    <%= @game.gallow %>
+    <%= gallow_img %>
   </p>
-<% elsif (@game.underscore_array == @game.word.split(//).join()) %>
+<% elsif (@game.underscore_array == "Game Over!") %>
   <h3>THIS GAME IS OVER</h3>
   <h4><%= Game.find(params[:id]).player_name %> correctly guessed <%= Game.find(params[:id]).player_name %>'s word! </h4>
   <p>
-    <%= @game.gallow %>
+    <%= gallow_img %>
   </p>
 <% else %>
   <p id="notice"><%= notice %></p>
@@ -26,48 +42,7 @@
   <p>
     <strong>Lives:</strong>
     <%= @game.lives %><br>
-    <% def empty_gallow %>
-      <% gallow = Array.new(7) { Array.new(26," ") } %>
-      <% gallow.select {|row| %>
-        <% row[25]="\n" %>
-        <% row[13]="|" %>
-      <% } %>
-      <% i = 7 %>
-      <% while i<25 %>
-        <% if gallow[6][i] == " " %>
-          <% gallow[6][i] = "_" %>
-        <% end %>
-        <% i+=1 %>
-      <% end %>
-      <% i = 13 %>
-      <% while i<21 %>
-        <% gallow[0][i] = "_" %>
-        <% i+=1 %>
-      <% end %>
-      <% gallow[1][20] = "|" %>
-      <% gallow[7]="\n" %>
-      <% gallow.insert(0,"\n") %>
-    <% end %>
-    <% if (@game.lives == "6") %>
-      <% gallow = empty_gallow %>
-      <%= gallow.join %>
-    <% elsif (@game.lives == "5") %>
-      <% gallow[3][20]="O" %>
-      <%= gallow.join %>
-    <% elsif (@game.lives == "4") %>
-      <% gallow[4][20] = "|" %>
-      <%= gallow.join %>
-    <% elsif (@game.lives == "3") %>
-      <% gallow[4][19] = "/" %>
-      <%= gallow.join %>
-    <% elsif (@game.lives == "2") %>
-      <% gallow[4][21] = "\\" %>
-      <%= gallow.join %>
-    <% elsif (@game.lives == "1") %>
-      <% gallow[5][19] = "/" %>
-      <%= gallow.join %>
-    <% end %>
-
+    <%= gallow_img %>
   </p>
 
   <p>

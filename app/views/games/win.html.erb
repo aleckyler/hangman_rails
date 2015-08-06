@@ -1,7 +1,23 @@
+<% if (Game.find(params[:id]).lives == "6") %>
+  <% gallow_img =  image_tag('empty_gallow.png', alt: '6 lives') %>
+<% elsif (Game.find(params[:id]).lives == "5") %>
+  <% gallow_img =  image_tag('gallow_w_head.png', alt: '5 lives') %>
+<% elsif (Game.find(params[:id]).lives == "4") %>
+  <% gallow_img =  image_tag('gallow_w_body.png', alt: '4 lives') %>
+<% elsif (Game.find(params[:id]).lives == "3") %>
+  <% gallow_img =  image_tag('gallow_w_1arm.png', alt: '3 lives') %>
+<% elsif (Game.find(params[:id]).lives == "2") %>
+  <% gallow_img =  image_tag('gallow_w_arms.png', alt: '2 lives') %>
+<% elsif (Game.find(params[:id]).lives == "1") %>
+  <% gallow_img =  image_tag('gallow_w_1leg.png', alt: '1 life') %>
+<% elsif (Game.find(params[:id]).lives == "0") %>
+  <% gallow_img =  image_tag('gallow_w_legs.png', alt: 'dead') %>
+<% end %>
+
 <h3>GAME OVER</h3>
 <h4><%= Game.find(params[:id]).player_name %> wins!</h4>
 <p>
-  <%= @game.gallow %>
+  <%= gallow_img %>
 </p>
 
 <%= link_to 'Home', games_path, notice: "" %>

@@ -22,8 +22,8 @@
         <td><%= game.lives %></td>
         <td><%= game.underscore_array %></td>
         <td><%= game.available_letters %></td>
-        <td><%= link_to 'Show', game %></td>
-        <td><%= link_to 'Destroy', game, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Play Game', game %></td>
+        <td><%= link_to 'Remove Game', game, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
