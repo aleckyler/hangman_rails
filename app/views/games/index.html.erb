@@ -20,7 +20,11 @@
         <td><%= game.host_name %></td>
         <td><%= game.player_name %></td>
         <td><%= game.lives %></td>
-        <td><%= game.underscore_array %></td>
+        <% if game.underscore_array == "Game Over!" %>
+          <td><%= game.underscore_array %></td>
+        <% else %>
+          <td><%= game.underscore_array.split(//).join(" ") %></td>
+        <% end %>
         <td><%= game.available_letters %></td>
         <td><%= link_to 'Play Game', game %></td>
         <td><%= link_to 'Remove Game', game, method: :delete, data: { confirm: 'Are you sure?' } %></td>
