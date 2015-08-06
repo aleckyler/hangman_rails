@@ -30,6 +30,14 @@ class GamesController < ApplicationController
     @game.word_array = @game.word.split(//)
     @game.underscore_array = ""
     @game.word.length.times{ @game.underscore_array << "_" }
+    j=0
+    while j < @game.underscore_array.length
+      if @game.word.split(//)[j] == " "
+        @game.underscore_array[j] = " ||| "
+      end
+      j += 1
+    end
+    @game.save
     # @game.underscore_array = @underscores.split(//)
 
     respond_to do |format|

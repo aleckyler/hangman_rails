@@ -22,7 +22,7 @@
   </p>
 <% elsif (@game.underscore_array == "Game Over!") %>
   <h3>THIS GAME IS OVER</h3>
-  <h4><%= Game.find(params[:id]).player_name %> correctly guessed <%= Game.find(params[:id]).host_name %>'s word: <%= Game.find(params[:id]).word %> ! </h4>
+  <h4><%= Game.find(params[:id]).player_name %> correctly guessed <%= Game.find(params[:id]).host_name %>'s word: "<%= Game.find(params[:id]).word %>"! </h4>
   <p>
     <%= gallow_img %>
   </p>
