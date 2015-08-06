@@ -51,6 +51,8 @@ class PlaysController < ApplicationController
                 format.html {redirect_to @play.game #, notice: "#{@play.guess} is in the word!"
               }
               end
+            elsif @play.guess == " "
+              format.html { redirect_to :back, notice: 'Guesses can only be one letter.' }
             else
               @play.game.lives = @play.game.lives.to_i - 1
               @play.game.save
