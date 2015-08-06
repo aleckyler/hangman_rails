@@ -1,4 +1,7 @@
 <h3>GAME OVER</h3>
 <h4><%= Game.find(params[:id]).player_name %> loses!</h4>
+<p>
+    <%= @game.gallow[5][21] = "\\" %>
+</p>
 
 <%= link_to 'Home', games_path %>
