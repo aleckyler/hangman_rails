@@ -33,7 +33,7 @@ class GamesController < ApplicationController
     j=0
     while j < @game.underscore_array.length
       if @game.word.split(//)[j] == " "
-        @game.underscore_array[j] = " ||| "
+        @game.underscore_array[j] = " | "
       end
       j += 1
     end
