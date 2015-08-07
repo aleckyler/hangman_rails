@@ -3,7 +3,7 @@ class UserMailer < ApplicationMailer
 
   def welcome_email(game)
     @game = game
-    email_with_name = %("#{@game.host_name}" <#{@game.player_email}>)
+    email_with_name = %("#{@game.player_name}" <#{@game.player_email}>)
     mail(to: email_with_name,
       subject: 'New Game Invitation',
       template_path: 'layouts',
