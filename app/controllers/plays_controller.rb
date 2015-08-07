@@ -31,7 +31,9 @@ class PlaysController < ApplicationController
       respond_to do |format|
         if @play.save
           @play.guess = @play.guess.downcase
-          if (@play.game.available_letters.include? @play.guess)
+          if !(@play.guess =~ (/\A[a-zA-Z]+\z/))
+            format.html { redirect_to :back, notice: 'Guesses must be a letter.' }
+          elsif (@play.game.available_letters.include? @play.guess)
             @play.game.available_letters = (@play.game.available_letters.split() - @play.guess.split()).join(" ")
             # check if guess is in word_array
             if (@play.game.word.split(//).include? @play.guess)
@@ -51,8 +53,6 @@ class PlaysController < ApplicationController
                 format.html {redirect_to @play.game #, notice: "#{@play.guess} is in the word!"
               }
               end
-            elsif @play.guess == " "
-              format.html { redirect_to :back, notice: 'Guesses can only be one letter.' }
             else
               @play.game.lives = @play.game.lives.to_i - 1
               @play.game.save
@@ -76,7 +76,7 @@ class PlaysController < ApplicationController
           end
 
         else
-          format.html { redirect_to :back, notice: 'Guesses can only be one letter.' }
+          format.html { redirect_to :back}
           format.json { render json: @play.errors, status: :unprocessable_entity }
         end
       end
